@@ -10,7 +10,7 @@ export default function Livestream() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const youtubeChannelUrl = "https://www.youtube.com/@lattergloryministries3882";
-  const websiteUrl = "https://www.lattergloryministries.com";
+  const websiteUrl = "https://www.latterglory.ug";
   const prayerMeetUrl = "https://meet.google.com/hij-city-pev";
 
   // Toggle dark mode
@@ -85,7 +85,7 @@ export default function Livestream() {
               rel="noopener noreferrer"
               className="inline-block mt-3 px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
             >
-              Visit www.lattergloryministries.com
+              Visit latterglory.ug
             </a>
           </div>
 

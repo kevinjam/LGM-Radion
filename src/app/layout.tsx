@@ -1,14 +1,30 @@
 // src/app/layout.tsx
 // src/app/layout.tsx
-import type { Metadata } from "next";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import "./globals.css";
 
-export const metadata: Metadata = {
-  title: "LGM Radio",
-  description: "Listen to **LGM Radio**, your home for uplifting sermons, inspiring podcasts, gospel music, and live interactive discussions. Stay connected and be blessed!",
-  manifest: "/manifest.json",
+export const metadata = {
+  title: "LGM Radio - Uplifting Sermons & Gospel Music",
+  description:
+    "Tune in to LGM Radio for uplifting sermons, inspiring podcasts, gospel music, and live interactive discussions. Stay connected and be blessed with our ministry!",
+  openGraph: {
+    title: "LGM Radio - Your Spiritual Home 🎧",
+    description:
+      "Join LGM Radio for soul-lifting sermons, inspiring podcasts, gospel music, and live discussions. Stay connected and be blessed! 🙏",
+    url: "https://radio.latterglory.ug", // Your subdomain
+    siteName: "LGM Radio",
+    images: [
+      {
+        url: "https://radio.latterglory.ug/icons/logo.png", // Path to your logo
+        width: 1200,
+        height: 1200,
+        alt: "LGM Radio Logo",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -21,8 +37,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="apple-mobile-web-app-title" content="Christian Radio" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="theme-color" content="#000000" />
-        <link rel="apple-touch-icon" href="/icon-192x192.png" />
-        <link rel="icon" href="/favicon.ico" />
+        {/* <link rel="apple-touch-icon" href="/icon-192x192.png" />
+        <link rel="icon" href="/favicon.ico" /> */}
       </head>
       <body>
       {children}

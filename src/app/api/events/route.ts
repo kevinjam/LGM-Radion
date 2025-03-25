@@ -14,13 +14,13 @@ export async function GET() {
           {
             name: "Overnight",
             description: "Except for every 1st Friday of the month",
-            time: "10:00 - 4:00 AM",
+            time: "10:00 PM - 4:00 AM",
             date: "Friday",
           },
           {
             name: "Sunday Service",
             description: "Sermons and Worship",
-            time: "10:00 - 1:00",
+            time: "10:00 AM - 1:00 PM",
             date: "Sunday",
           }
     ];
