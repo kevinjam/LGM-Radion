@@ -17,7 +17,7 @@ export const metadata = {
     siteName: "LGM Radio",
     images: [
       {
-        url: "https://radio.latterglory.ug/icons/logo.png", // Path to your logo
+        url: "https://radio.latterglory.ug/icons/logoshare.png", // Path to your logo
         width: 1200,
         height: 1200,
         alt: "LGM Radio Logo",
