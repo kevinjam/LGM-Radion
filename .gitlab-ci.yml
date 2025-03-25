@@ -1,0 +1,50 @@
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  image: node:18-alpine
+  script:
+    - npm install
+    - npm run build || (echo "npm run build failed" && exit 1)
+    - ls -la
+    - ls -la src/app || echo "src/app directory not found"
+    - ls -la src/app/* || echo "src/app contents not found"
+    - ls -la out/ || (echo "out/ directory not found after next export" && exit 1)
+  artifacts:
+    paths:
+      - out/
+      - public/
+    expire_in: 1 hour
+  only:
+    - main
+
+deploy_ssl_and_static:
+  stage: deploy
+  image: alpine:latest
+  before_script:
+    - apk add --no-cache git openssl
+    - git config --global user.name "kevinjam"
+    - git config --global user.email "kevin.janvier5@gmail.com"
+    - git fetch origin main
+    - git checkout main
+  script:
+    - mkdir -p public/ssl
+    - echo "$CF_CERTIFICATE" > public/ssl/cert.pem
+    - echo "$CF_PRIVATE_KEY" > public/ssl/key.pem
+    - mv public public_backup
+    - mkdir -p public
+    - mv public_backup/ssl public/
+    - mv public_backup/sw.js public/ 2>/dev/null || true
+    - if [ -d "out" ] && [ "$(ls -A out)" ]; then mv out/* public/; else echo "out/ directory is empty or does not exist"; exit 1; fi
+    - rm -rf public_backup
+    - git add public/
+    - git commit -m "Deploy Next.js static site and update SSL certificate"
+    - git push origin main
+  dependencies:
+    - build
+  only:
+    - main
+  environment:
+    name: production

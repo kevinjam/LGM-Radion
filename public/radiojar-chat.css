@@ -1,0 +1,41 @@
+/* public/radiojar-chat.css */
+.rj-chat-container {
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 8px !important;
+  }
+  
+  .rj-chat-container iframe {
+    width: 100% !important;
+    border-radius: 8px !important;
+  }
+  
+  /* Light mode styles */
+  .rj-chat-container {
+    background-color: #f3f4f6 !important; /* Tailwind's gray-100 */
+    color: #374151 !important; /* Tailwind's gray-700 */
+  }
+  
+  /* Dark mode styles (applied dynamically via JavaScript) */
+  .rj-chat-container.dark-mode {
+    background-color: #1f2937 !important; /* Tailwind's gray-800 */
+    color: #d1d5db !important; /* Tailwind's gray-300 */
+  }
+  
+  /* Ensure the chat messages and input fields are styled appropriately */
+  .rj-chat-messages {
+    background-color: transparent !important;
+  }
+  
+  .rj-chat-input {
+    background-color: #ffffff !important;
+    color: #374151 !important;
+    border: 1px solid #d1d5db !important;
+    border-radius: 4px !important;
+  }
+  
+  .rj-chat-container.dark-mode .rj-chat-input {
+    background-color: #374151 !important; /* Tailwind's gray-700 */
+    color: #d1d5db !important; /* Tailwind's gray-300 */
+    border: 1px solid #4b5563 !important; /* Tailwind's gray-600 */
+  }
