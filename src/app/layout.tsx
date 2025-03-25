@@ -3,6 +3,7 @@
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react"
 
 export const metadata = {
   title: "LGM Radio - Uplifting Sermons & Gospel Music",
@@ -42,6 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
       {children}
+      <Analytics />
         {/* <ErrorBoundary fallback={<div className="text-center p-4 text-red-500">An error occurred. Please refresh the page.</div>}>
           {children}
         </ErrorBoundary> */}
