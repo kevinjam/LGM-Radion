@@ -5,16 +5,22 @@ export async function GET() {
   try {
     // Mock data (replace with actual database query)
     const events = [
+      {
+        name: "Command Your Week",
+        description: "Awake the donwn",
+        time: "04:30 AM - 05:15PM",
+        date: "Monday",
+      },
         {
             name: "Lunch Hour",
             description: "Lunch Hour Family Fellowship",
-            time: "1:00 PM",
+            time: "1:00 PM - 2:00 PM",
             date: "Monday",
           },
           {
             name: "Overnight",
-            description: "Except for every 1st Friday of the month",
-            time: "10:00 PM - 4:00 AM",
+            description: "Friday of the month 6PM - 9PM",
+            time: "10:00 PM - 3:00 AM",
             date: "Friday",
           },
           {
@@ -23,12 +29,7 @@ export async function GET() {
             time: "09:00 AM - 12:00 PM",
             date: "Sunday",
           },
-          // {
-          //   name: "Prayer",
-          //   description: "Prayer",
-          //   time: "09:00 AM - 10:00 PM",
-          //   date: "Sunday",
-          // }
+         
     ];
 
     return NextResponse.json(events, { status: 200 });
