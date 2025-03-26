@@ -73,7 +73,7 @@ export default function Contact() {
         <div className="flex flex-col md:flex-row gap-8">
           {/* Church Locations - Moved above form on mobile */}
           <div className="w-full md:w-1/2 order-first md:order-last">
-            <h2 className="text-xl font-semibold mb-4">Our Church Locations</h2>
+            <h2 className="text-xl font-semibold mb-4">Faith Family Church Locations</h2>
             <div className="space-y-6">
               {/* Rubaga (Main Church) */}
               <div className="p-4 bg-gray-100 rounded-lg shadow-md">

@@ -51,47 +51,11 @@ export default function Livestream() {
         {/* Link Sections Grouped */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-          {/* YouTube Channel Link */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-2xl font-semibold flex items-center justify-center mb-4">
-              <FaYoutube className="mr-2 text-red-600" />
-              Watch More on YouTube
-            </h2>
-            <p className={`mt-2 ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
-              Stay connected with our latest videos and sermons.
-            </p>
-            <a
-              href={youtubeChannelUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-3 px-5 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
-            >
-              Visit Our YouTube Channel
-            </a>
-          </div>
-
-          {/* Website Link */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-2xl font-semibold flex items-center justify-center mb-4">
-              <FaGlobe className="mr-2 text-blue-500" />
-              Visit Our Website
-            </h2>
-            <p className={`mt-2 ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
-              Explore our ministry and all the resources we offer.
-            </p>
-            <a
-              href={websiteUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-3 px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Visit latterglory.ug
-            </a>
-          </div>
+        
 
           {/* Prayer Meeting Link */}
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-2xl font-semibold flex items-center justify-center mb-4">
+            <h2 className="text-2xl font-semibold flex items-lect justify-left mb-4">
               <FaPray className="mr-2 text-green-500" />
               Command Your Week
             </h2>
@@ -108,8 +72,8 @@ export default function Livestream() {
             </a>
           </div>
 
- {/* Tuesday Intercession Altar Section */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
+           {/* Tuesday Intercession Altar Section */}
+           <div className="bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-2xl font-semibold flex items-center justify-center mb-4">
               <FaPray className="mr-2 text-green-500" />
               Join Our Tuesday Intercession Altar
@@ -124,6 +88,46 @@ export default function Livestream() {
               className="inline-block mt-3 px-5 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
             >
                Join Tuesday Intercession (Google Meet)
+            </a>
+          </div>
+
+  {/* YouTube Channel Link */}
+  <div className="bg-white p-6 rounded-lg shadow-md">
+            <h2 className="text-2xl font-semibold flex items-left justify-left mb-4">
+              <FaYoutube className="mr-2 text-red-600" />
+              Watch More on YouTube
+            </h2>
+            <p className={`mt-2 ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
+              Stay connected with our latest videos and sermons.
+            </p>
+            <a
+              href={youtubeChannelUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-3 px-5 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+            >
+              Visit Our YouTube Channel
+            </a>
+          </div>
+          
+
+
+          {/* Website Link */}
+          <div className="bg-white p-6 rounded-lg shadow-md">
+            <h2 className="text-2xl font-semibold flex items-left justify-left mb-4">
+              <FaGlobe className="mr-2 text-[#320958]" />
+              Visit Our Website
+            </h2>
+            <p className={`mt-2 ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
+              Explore our ministry and all the resources we offer.
+            </p>
+            <a
+              href={websiteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-3 px-5 py-2 bg-[#320958] text-white rounded-lg hover:bg-[#320958] transition-colors"
+            >
+              Visit latterglory.ug
             </a>
           </div>
 

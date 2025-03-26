@@ -371,12 +371,12 @@ export default function Podcast() {
                         )}
                       </button>
                       <a
-                        href={episode.audioUrl}
-                        download
-                        className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-300 text-gray-800 hover:bg-gray-400 transition-colors"
-                      >
-                        <FaDownload className="text-sm" />
-                      </a>
+  href={episode.audioUrl}
+  download
+  className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-300 text-gray-800 hover:bg-gray-400 transition-colors"
+>
+  <FaDownload className="text-sm" />
+</a>
                     </div>
                   </div>
                 </div>
