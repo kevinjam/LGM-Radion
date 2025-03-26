@@ -6,15 +6,15 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/react"
 
 export const metadata = {
-  title: "LGM Radio - Uplifting Sermons & Gospel Music",
+  title: "LGM Media app - Uplifting Sermons & Gospel Music",
   description:
     "Tune in to LGM Radio for uplifting sermons, inspiring podcasts, gospel music, and live interactive discussions. Stay connected and be blessed with our ministry!",
   openGraph: {
-    title: "LGM Radio - Your Spiritual Home 🎧",
+    title: "LGM Media app - Your Spiritual Home 🎧",
     description:
       "Join LGM Radio for soul-lifting sermons, inspiring podcasts, gospel music, and live discussions. Stay connected and be blessed! 🙏",
     url: "https://radio.latterglory.ug", // Your subdomain
-    siteName: "LGM Radio",
+    siteName: "LGM Media app",
     images: [
       {
         url: "https://radio.latterglory.ug/icons/logoshare.png", // Path to your logo

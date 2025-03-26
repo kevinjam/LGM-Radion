@@ -1,6 +1,6 @@
 {
   "name": "Latter Glory Ministries",
-  "short_name": "Radio LGM",
+  "short_name": "LGM Media app",
   "description": "Tune in to LGM Radio for uplifting sermons, inspiring podcasts, gospel music, and live interactive discussions. Stay connected and be blessed with our ministry!",
   "start_url": "/",
   "display": "standalone",
@@ -64,14 +64,14 @@
       "sizes": "1280x720",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "LGM Radio on Desktop"
+      "label": "LGM Media app on Desktop"
     },
     {
       "src": "/screenshots/mobile-screenshot.png",
       "sizes": "720x1280",
       "type": "image/png",
       "form_factor": "narrow",
-      "label": "LGM Radio on Mobile"
+      "label": "LGM Media app on Mobile"
     }
   ]
 }
