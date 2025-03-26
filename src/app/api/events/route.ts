@@ -7,8 +7,8 @@ export async function GET() {
     const events = [
       {
         name: "Command Your Week",
-        description: "Awake the donwn",
-        time: "04:30 AM - 05:15PM",
+        description: "Awake the Dawn",
+        time: "04:30 AM - 05:15 AM",
         date: "Monday",
       },
         {
@@ -19,7 +19,7 @@ export async function GET() {
           },
           {
             name: "Overnight",
-            description: "Friday of the month 6PM - 9PM",
+            description: "1st Friday of the month 6PM - 9PM",
             time: "10:00 PM - 3:00 AM",
             date: "Friday",
           },
