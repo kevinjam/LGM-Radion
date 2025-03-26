@@ -68,12 +68,89 @@ export default function Contact() {
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto w-full flex-1 flex flex-col px-4 py-8">
-        {/* <h1 className="text-3xl font-bold text-center mb-8">Contact Us</h1> */}
 
         {/* Contact Form and Locations */}
         <div className="flex flex-col md:flex-row gap-8">
+          {/* Church Locations - Moved above form on mobile */}
+          <div className="w-full md:w-1/2 order-first md:order-last">
+            <h2 className="text-xl font-semibold mb-4">Our Church Locations</h2>
+            <div className="space-y-6">
+              {/* Rubaga (Main Church) */}
+              <div className="p-4 bg-gray-100 rounded-lg shadow-md">
+                <h3 className="text-lg font-bold text-[#320958] dark:text-[#790DA3]">Rubaga (Main Church)</h3>
+                <p><strong>Location:</strong> Kabuusu, Rubaga</p>
+                <p><strong>Service Times:</strong> Sunday 9:00 AM - 12:00 PM</p>
+                <p>
+                  <strong>Contact:</strong>{" "}
+                  <a
+                    href="tel:+256782664592"
+                    className="text-[#320958] hover:text-[#790DA3] underline"
+                  >
+                    +256 782 664 592
+                  </a>
+                </p>
+                <a
+                  href="https://www.google.com/maps/place/faith+family+church/@0.2976623,32.5476881,17z/data=!3m1!4b1!4m6!3m5!1s0x177dbcc6e6400001:0xec025891350a6e8c!8m2!3d0.2976623!4d32.5525644!16s%2Fg%2F11txmzl0rp?entry=ttu&g_ep=EgoyMDI1MDMyMy4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#320958] hover:text-[#790DA3] underline"
+                >
+                  View on Map
+                </a>
+              </div>
+
+              {/* Ntinda */}
+              <div className="p-4 bg-gray-100 rounded-lg shadow-md">
+                <h3 className="text-lg font-bold text-[#320958] dark:text-[#790DA3]">Ntinda</h3>
+                <p><strong>Location:</strong> Meet at Eliana Hotel, Ntinda</p>
+                <p><strong>Service Times:</strong> Sunday 8:00 AM - 9:30 AM</p>
+                <p>
+                  <strong>Contact:</strong>{" "}
+                  <a
+                    href="tel:+256703648648"
+                    className="text-[#320958] hover:text-[#790DA3] underline"
+                  >
+                    +256 703 648 648
+                  </a>
+                </p>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Eliana+Hotel,+Ntinda,+Kampala,+Uganda"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#320958] hover:text-[#790DA3] underline"
+                >
+                  View on Map
+                </a>
+              </div>
+
+              {/* Nakawuka */}
+              <div className="p-4 bg-gray-100 rounded-lg shadow-md">
+                <h3 className="text-lg font-bold text-[#320958] dark:text-[#790DA3]">Nakawuka</h3>
+                <p><strong>Location:</strong> Meet at The Adrace Resort, Nakawuka</p>
+                <p><strong>Service Times:</strong> Sunday 8:00 AM - 10:00 AM</p>
+                <p>
+                  <strong>Contact:</strong>{" "}
+                  <a
+                    href="tel:+256700321048"
+                    className="text-[#320958] hover:text-[#790DA3] underline"
+                  >
+                    +256 700 321 048
+                  </a>
+                </p>
+                <a
+                  href="https://www.google.com/maps/place/The+Adrace+Executive+Resort/@0.1906182,32.4555223,17z/data=!3m1!4b1!4m6!3m5!1s0x177d99e9d1ec0319:0xaa7726d8b73aaa5e!8m2!3d0.1906182!4d32.4581026!16s%2Fg%2F11j13k0dxv?entry=ttu&g_ep=EgoyMDI1MDMyMy4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#320958] hover:text-[#790DA3] underline"
+                >
+                  View on Map
+                </a>
+              </div>
+            </div>
+          </div>
+
           {/* Contact Form */}
-          <div className="w-full md:w-1/2">
+          <div className="w-full md:w-1/2 order-last md:order-first">
             <h2 className="text-xl font-semibold mb-4">Get in Touch</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
@@ -106,7 +183,7 @@ export default function Contact() {
                   onChange={(e) => setContactInfo(e.target.value)}
                   className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-800 ${
                     isDarkMode
-                      ? "bg-gray-700 bg-gray-600 text-gray-200"
+                      ? "bg-gray-700 border-gray-600 text-gray-200"
                       : "bg-white border-gray-300 text-gray-800"
                   }`}
                   placeholder="Enter your email or phone number"
@@ -170,59 +247,6 @@ export default function Contact() {
                 )}
               </div>
             </form>
-          </div>
-          {/* Church Locations */}
-          <div className="w-full md:w-1/2">
-            <h2 className="text-xl font-semibold mb-4">Our Church Locations</h2>
-            <div className="space-y-6">
-              {/* Rubaga (Main Church) */}
-              <div className="p-4 bg-gray-100 dark:[#320958] rounded-lg shadow-md">
-                <h3 className="text-lg font-bold text-[#320958] dark:text-[#790DA3]">Rubaga (Main Church)</h3>
-                <p><strong>Location:</strong> Kabuusu, Rubaga</p>
-                <p><strong>Service Times:</strong> Sunday 9:00 AM - 12:00 PM</p>
-                <p><strong>Contact:</strong> +256 782 664 592</p>
-                <a
-                  href="https://www.google.com/maps/place/faith+family+church/@0.2976623,32.5476881,17z/data=!3m1!4b1!4m6!3m5!1s0x177dbcc6e6400001:0xec025891350a6e8c!8m2!3d0.2976623!4d32.5525644!16s%2Fg%2F11txmzl0rp?entry=ttu&g_ep=EgoyMDI1MDMyMy4wIKXMDSoASAFQAw%3D%3D"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#320958] hover:text-[#790DA3] underline"
-                >
-                  View on Map
-                </a>
-              </div>
-
-              {/* Ntinda */}
-              <div className="p-4 bg-gray-100 dark:[#320958]rounded-lg shadow-md">
-                <h3 className="text-lg font-bold text-[#320958] dark:text-[#790DA3]">Ntinda</h3>
-                <p><strong>Location:</strong> Meet at Eliana Hotel, Ntinda</p>
-                <p><strong>Service Times:</strong> Sunday 8:00 AM - 9:30 AM</p>
-                <p><strong>Contact:</strong> +256 703 648 648</p>
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=Eliana+Hotel,+Ntinda,+Kampala,+Uganda"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#320958] hover:text-[#790DA3] underline"
-                >
-                  View on Map
-                </a>
-              </div>
-
-              {/* Nakawuka */}
-              <div className="p-4 bg-gray-100 dark:[#320958] rounded-lg shadow-md">
-                <h3 className="text-lg font-bold text-[#320958] dark:text-[#790DA3]">Nakawuka</h3>
-                <p><strong>Location:</strong> Meet at The Adrace Resort, Nakawuka</p>
-                <p><strong>Service Times:</strong> Sunday 8:00 AM - 10:00 AM</p>
-                <p><strong>Contact:</strong> +256 700 321 048</p>
-                <a
-                  href="https://www.google.com/maps/place/The+Adrace+Executive+Resort/@0.1906182,32.4555223,17z/data=!3m1!4b1!4m6!3m5!1s0x177d99e9d1ec0319:0xaa7726d8b73aaa5e!8m2!3d0.1906182!4d32.4581026!16s%2Fg%2F11j13k0dxv?entry=ttu&g_ep=EgoyMDI1MDMyMy4wIKXMDSoASAFQAw%3D%3D"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#320958] hover:text-[#790DA3] underline"
-                >
-                  View on Map
-                </a>
-              </div>
-            </div>
           </div>
         </div>
 
