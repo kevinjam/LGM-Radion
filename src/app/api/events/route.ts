@@ -20,9 +20,15 @@ export async function GET() {
           {
             name: "Sunday Service",
             description: "Sermons and Worship",
-            time: "10:00 AM - 1:00 PM",
+            time: "09:00 AM - 12:00 PM",
             date: "Sunday",
-          }
+          },
+          // {
+          //   name: "Prayer",
+          //   description: "Prayer",
+          //   time: "09:00 AM - 10:00 PM",
+          //   date: "Sunday",
+          // }
     ];
 
     return NextResponse.json(events, { status: 200 });

@@ -33,13 +33,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <head>
         {/* PWA Meta Tags */}
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Christian Radio" />
-        <meta name="mobile-web-app-capable" content="yes" />
+        {/* Link to the manifest */}
+        <link rel="manifest" href="/manifest.json" />
+        {/* Theme color matching your manifest */}
         <meta name="theme-color" content="#000000" />
-        {/* <link rel="apple-touch-icon" href="/icon-192x192.png" />
-        <link rel="icon" href="/favicon.ico" /> */}
       </head>
       <body>
       {children}

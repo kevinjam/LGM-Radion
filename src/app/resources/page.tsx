@@ -10,7 +10,7 @@ export default function Livestream() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   const youtubeChannelUrl = "https://www.youtube.com/@lattergloryministries3882";
-  const websiteUrl = "https://www.latterglory.ug";
+  const websiteUrl = "https://latterglory.ug";
   const prayerMeetUrl = "https://meet.google.com/hij-city-pev";
 
   // Toggle dark mode
@@ -93,7 +93,7 @@ export default function Livestream() {
           <div className="bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-2xl font-semibold flex items-center justify-center mb-4">
               <FaPray className="mr-2 text-green-500" />
-              Join Our Monday Morning Prayer
+              Command Your Week
             </h2>
             <p className={`mt-2 ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}>
             Let&apos;s command our week every Monday from <b>4:30 AM - 5:15 AM </b>
