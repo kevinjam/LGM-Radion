@@ -1,38 +1,34 @@
 // src/app/api/events/route.ts
 import { NextResponse } from "next/server";
-
+import { connectToDatabase } from "../../../lib/mongodb";
 export async function GET() {
   try {
-    // Mock data (replace with actual database query)
-    const events = [
-      {
-        name: "Command Your Week",
-        description: "Awake the Dawn",
-        time: "04:30 AM - 05:15 AM",
-        date: "Monday",
-      },
+    const { db } = await connectToDatabase();
+    const events = await db
+      .collection("upcoming_events")
+      .find(
+        {},
         {
-            name: "Lunch Hour",
-            description: "Lunch Hour Family Fellowship",
-            time: "1:00 PM - 2:00 PM",
-            date: "Monday",
+          projection: {
+            name: 1,
+            description: 1,
+            time: 1,
+            date: 1,
+            _id: 0,
           },
-          {
-            name: "Overnight",
-            description: "1st Friday of the month 6PM - 9PM",
-            time: "10:00 PM - 3:00 AM",
-            date: "Friday",
-          },
-          {
-            name: "Sunday Service",
-            description: "Sermons and Worship",
-            time: "09:00 AM - 12:00 PM",
-            date: "Sunday",
-          },
-         
-    ];
+        }
+      )
+      .toArray();
+      console.log("Fetched events from database:");
+    console.log("Fetched events:", events);
 
-    return NextResponse.json(events, { status: 200 });
+    return NextResponse.json(events, {
+      status: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "http://localhost:3000",
+        "Access-Control-Allow-Methods": "GET",
+      },
+    });
   } catch (error) {
     console.error("Error fetching events:", error);
     return NextResponse.json(

@@ -14,13 +14,15 @@
     "jsx": "preserve",
     "incremental": true,
     "typeRoots": ["./node_modules/@types", "./types"],
+    "baseUrl": "src",
     "plugins": [
       {
         "name": "next"
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      // "@/*": ["./src/*"]
+      "@/*": ["./*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
