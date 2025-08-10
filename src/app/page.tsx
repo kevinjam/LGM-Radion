@@ -10,6 +10,16 @@ import Footer from "../components/Footer";
 import UpcomingEvents from "../components/UpcomingEvents";
 import BottomNav from "../components/BottomNav";
 
+// Define interfaces for YouTube video data
+interface YouTubeVideo {
+  id: string;
+  title: string;
+  thumbnailUrl: string;
+  channelTitle: string;
+  publishedAt: string;
+  viewCount?: string;
+}
+
 export default function Home() {
   const [isLivePlaying, setIsLivePlaying] = useState(false); // For live radio
   const [liveCurrentTime, setLiveCurrentTime] = useState(0);
@@ -30,7 +40,10 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [currentEpisode, setCurrentEpisode] = useState<number | null>(null);
-  const [iframeLoaded, setIframeLoaded] = useState(false); // Track if the iframe loaded
+
+  const [latestVideo, setLatestVideo] = useState<YouTubeVideo | null>(null);
+  const [videoLoading, setVideoLoading] = useState(true);
+
   const liveAudioRef = useRef<HTMLAudioElement>(null); // For live radio
   const episodeAudioRef = useRef<HTMLAudioElement>(null); // For episodes
 
@@ -69,6 +82,41 @@ export default function Home() {
 
     fetchRSS();
   }, []);
+
+
+    // Fetch latest YouTube video function
+    const fetchLatestVideo = async () => {
+      try {
+        setVideoLoading(true);
+        console.log('Fetching latest video...');
+        const response = await fetch('/api/youtube/latest');
+        console.log('Response status:', response.status);
+        
+        if (!response.ok) {
+          throw new Error(`Failed to fetch latest video: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        console.log('Received video data:', data);
+        setLatestVideo(data);
+      } catch (error) {
+        console.error('Error fetching latest video:', error);
+        // Keep fallback data if available
+      } finally {
+        setVideoLoading(false);
+      }
+    };
+
+      // Fetch latest YouTube video on component mount
+  useEffect(() => {
+    fetchLatestVideo();
+  }, []);
+
+    // Debug video state changes
+    useEffect(() => {
+      console.log('Video state changed:', { videoLoading, latestVideo });
+    }, [videoLoading, latestVideo]);
+  
 
   // Toggle play for the live radio
   const toggleLivePlay = () => {
@@ -390,66 +438,159 @@ export default function Home() {
             )}
           </div>
 
-          {/* Radiojar Direct Messaging (Iframe) */}
-          <div
+            {/* Latest YouTube Video Display */}
+            <div
             className={`w-full md:w-1/2 p-3 rounded-xl shadow-lg transition-all duration-300 backdrop-blur-md ${
               isDarkMode
-                ? "bg-gradient-to-br from-[#320958]/50 to-purple-900/50"
+                ? "bg-gradient-to-br from-green-900/50 to-purple-900/50"
                 : "bg-gradient-to-br from-green-100/50 to-purple-200/50"
             } flex flex-col`}
           >
-            <h3
-            >
-              Direct Messaging
-            </h3>
-            <div className="relative flex-1 min-h-[350px]">
-      {/* Iframe Container */}
-      <iframe
-        src="https://chat.radiojar.com/6mx6zxgydzzuv/"
-        width="100%"
-        height="100%"
-        scrolling="no"
-        frameBorder="0"
-        className="absolute inset-0"
-        onLoad={() => setIframeLoaded(true)}
-        onError={() => setIframeLoaded(false)}
-      ></iframe>
-      {/* Loading Overlay */}
-      {!iframeLoaded && (
-        <div className="absolute inset-0 flex items-center justify-center bg-opacity-50 backdrop-blur-sm">
-          <div className="flex items-center space-x-2">
-            <svg
-              className="animate-spin h-5 w-5 text-green-500"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <circle
-                className="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                strokeWidth="4"
-              ></circle>
-              <path
-                className="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-              ></path>
-            </svg>
-            <p className={`text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"}`}>Loading messaging...</p>
+            <div className="flex items-center justify-between mb-2">
+              <h3>Latest Video from YouTube</h3>
+              <button
+                onClick={fetchLatestVideo}
+                className={`px-3 py-1 text-xs rounded-lg transition-all duration-300 ${
+                  isDarkMode
+                    ? "bg-gray-700 hover:bg-gray-600 text-gray-200"
+                    : "bg-gray-200 hover:bg-gray-300 text-gray-700"
+                }`}
+              >
+                Refresh
+              </button>
+            </div>
+            <div className="relative flex-1 min-h-[350px] flex flex-col p-4">
+              {/* Latest YouTube Video */}
+              {videoLoading ? (
+                <div className="flex items-center justify-center h-full">
+                  <div className="flex items-center space-x-2">
+                    <svg
+                      className="animate-spin h-6 w-6 text-red-500"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                    <p className={`text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"}`}>Loading latest video...</p>
+                  </div>
+                </div>
+              ) : latestVideo ? (
+                <div className="space-y-4">
+                  {/* Embedded Video Player */}
+                  <div className="w-full aspect-video rounded-lg overflow-hidden shadow-lg">
+                    <iframe
+                      src={`https://www.youtube.com/embed/${latestVideo.id}?rel=0&modestbranding=1`}
+                      title={latestVideo.title}
+                      className="w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                  
+                  {/* Video Info */}
+                  <div className="space-y-2">
+                    <h4 className={`text-lg font-bold line-clamp-2 ${isDarkMode ? "text-white" : "text-gray-800"}`}>
+                      {latestVideo.title}
+                    </h4>
+                    <p className={`text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"} line-clamp-2`}>
+                      {latestVideo.channelTitle}
+                    </p>
+                    
+                    {/* Video Stats */}
+                    <div className="flex items-center justify-between text-xs text-gray-500">
+                      <span>{latestVideo.viewCount} views</span>
+                      <span>{latestVideo.publishedAt}</span>
+                    </div>
+                    
+                    {/* Watch on YouTube Button */}
+                     <a
+                      href={latestVideo.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`inline-flex items-center justify-center w-full px-4 py-2 rounded-lg font-semibold transition-all duration-300 ${
+                        isDarkMode
+                          ? "bg-red-600 hover:bg-red-700 text-white shadow-lg hover:shadow-xl"
+                          : "bg-red-500 hover:bg-red-600 text-white shadow-md hover:shadow-lg"
+                      }`}
+                    >
+                      <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                      </svg>
+                      Watch on YouTube
+                    </a>
+                    
+                    {/* Channel Link */}
+                    {/* <a
+                      href={latestVideo.channelUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`text-center block text-sm ${isDarkMode ? "text-blue-400 hover:text-blue-300" : "text-blue-600 hover:text-blue-700"} transition-colors duration-200`}
+                    >
+                      Visit Channel
+                    </a> */}
+                  </div>
+                </div>
+              ) : (
+                <div className="flex items-center justify-center h-full">
+                  <div className="text-center space-y-4">
+                    <div className="w-16 h-16 mx-auto text-red-500">
+                      <svg fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                      </svg>
+                    </div>
+                    <p className={`text-sm ${isDarkMode ? "text-gray-300" : "text-gray-600"}`}>
+                      Unable to load latest video. Visit our channel directly.
+                    </p>
+                    {/* <a
+                      href="https://www.youtube.com/@lattergloryministries3882"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`inline-flex items-center px-4 py-2 rounded-lg font-semibold transition-all duration-300 ${
+                        isDarkMode
+                          ? "bg-red-600 hover:bg-red-700 text-white shadow-lg hover:shadow-xl"
+                          : "bg-red-500 hover:bg-red-600 text-white shadow-md hover:shadow-lg"
+                      }`}
+                    >
+                      Visit Channel
+                    </a> */}
+                  </div>
+                </div>
+              )}
+              
+              {/* Always show a direct link to your channel */}
+              {/* <div className="mt-4 text-center">
+                <a
+                  href="https://www.youtube.com/@lattergloryministries3882"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center px-4 py-2 rounded-lg font-semibold transition-all duration-300 ${
+                    isDarkMode
+                      ? "bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl"
+                      : "bg-blue-500 hover:bg-blue-600 text-white shadow-md hover:shadow-lg"
+                  }`}
+                >
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                  </svg>
+                  Subscribe to Channel
+                </a>
+              </div> */}
+            </div>
           </div>
-        </div>
-      )}
-      {/* Error Message */}
-      {iframeLoaded === false && (
-        <div className="absolute inset-0 flex items-center justify-center bg-opacity-50 backdrop-blur-sm">
-          <p className="text-red-500 text-sm">Failed to load messaging. Please try again later.</p>
-        </div>
-      )}
-    </div>
-          </div>
+        
         </div>
       </div>
 
