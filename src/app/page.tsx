@@ -219,10 +219,11 @@ export default function Home() {
             <div className={`absolute inset-0 flex flex-col items-center justify-center ${isDarkMode ? "bg-gray-800 bg-opacity-80" : "bg-white bg-opacity-80"} rounded-2xl z-20`}>
               <audio
                 ref={liveAudioRef}
-                src="http://stream.radiojar.com/6mx6zxgydzzuv"
+                src="https://ffcug.radio12345.com"
               />
+              
 
-              {/* Song Info */}
+              {/* Song Info radio http://stream.radiojar.com/6mx6zxgydzzuv */}
               {/* <div className="text-center mb-4">
                 <h2 className="text-xl md:text-2xl font-bold">LGM Radio</h2>
                 <p className={`${isDarkMode ? "text-gray-300" : "text-gray-500"} text-sm`}>playing</p>
