@@ -504,10 +504,10 @@ export default function Home() {
                     </p>
                     
                     {/* Video Stats */}
-                    <div className="flex items-center justify-between text-xs text-gray-500">
+                    {/* <div className="flex items-center justify-between text-xs text-gray-500">
                       <span>{latestVideo.viewCount} views</span>
                       <span>{latestVideo.publishedAt}</span>
-                    </div>
+                    </div> */}
                     
                     {/* Watch on YouTube Button */}
                      <a
