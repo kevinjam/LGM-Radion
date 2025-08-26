@@ -40,7 +40,6 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [currentEpisode, setCurrentEpisode] = useState<number | null>(null);
-  const [iframeLoaded, setIframeLoaded] = useState(false); // Track if the iframe loaded
   const liveAudioRef = useRef<HTMLAudioElement>(null); // For live radio
   const episodeAudioRef = useRef<HTMLAudioElement>(null); // For episodes
 
@@ -511,7 +510,7 @@ export default function Home() {
                     
                     {/* Watch on YouTube Button */}
                      <a
-                      href={latestVideo.url}
+                      href={`https://www.youtube.com/watch?v=${latestVideo.id}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className={`inline-flex items-center justify-center w-full px-4 py-2 rounded-lg font-semibold transition-all duration-300 ${
