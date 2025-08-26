@@ -67,8 +67,8 @@ export default function Header({ isDarkMode, toggleDarkMode }: HeaderProps) {
             <Link href="/resources" className="text-white hover:text-gray-200 transition-colors">
               Resources
             </Link>
-            <Link href="/chat" className="text-white hover:text-gray-200 transition-colors">
-              Chat
+              <Link href="/prayer" className="text-white hover:text-gray-200 transition-colors">
+              Prayer Requests
             </Link>
             <Link href="/contact" className="text-white hover:text-gray-200 transition-colors">
               Contact Us
@@ -124,11 +124,11 @@ export default function Header({ isDarkMode, toggleDarkMode }: HeaderProps) {
               Resources
             </Link>
             <Link
-              href="/chat"
+              href="/prayer"
               className="text-white hover:text-gray-200 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Chat
+              Prayer Requests
             </Link>
             <Link
               href="/contact"
