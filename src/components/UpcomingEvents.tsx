@@ -18,7 +18,8 @@ export default function UpcomingEvents() {
       try {
         setLoading(true);
         const response = await fetch("/api/events");
-        // Check if the response is ok (status code 200-299)  
+        // Check if the response is ok (status code 200-299)
+        console.log("Response receiving ------------- ", response);
         if (!response.ok) {
           throw new Error("Failed to fetch events");
         }

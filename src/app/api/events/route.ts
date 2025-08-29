@@ -19,7 +19,7 @@ export async function GET() {
         }
       )
       .toArray();
-      console.log("Fetched events from database:");
+      console.log("Fetched events from database: ",db.databaseName);
     console.log("Fetched events:", events);
 
     return NextResponse.json(events, {
