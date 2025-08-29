@@ -260,7 +260,7 @@ export default function Home() {
             <div className={`absolute inset-0 flex flex-col items-center justify-center ${isDarkMode ? "bg-gray-800 bg-opacity-80" : "bg-white bg-opacity-80"} rounded-2xl z-20`}>
               <audio
                 ref={liveAudioRef}
-                src="https://uk22freenew.listen2myradio.com/live.mp3?typeportmount=s1_13530_stream_819503419"
+                src="http://stream.radiojar.com/6mx6zxgydzzuv"
               />
               
 
